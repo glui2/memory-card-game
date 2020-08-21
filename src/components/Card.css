@@ -1,0 +1,18 @@
+.card {
+  margin: 5px;
+  pointer-events: all;
+  x: 10;
+  y: 8;
+  width: 100px;
+  height: 150px;
+}
+
+.card:hover {
+  animation: moveCard 1000ms ease-in-out both infinite;
+}
+
+@keyframes moveCard {
+  50% {
+    y: 3;
+  }
+}
