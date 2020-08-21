@@ -1,10 +1,30 @@
+:root {
+  --card-width: 100px;
+  --card-height: 150px;
+}
+
+.card-svg {
+  justify-content: center;
+}
+
 .card {
-  margin: 5px;
+  margin: auto;
+  text-align: center;
   pointer-events: all;
-  x: 10;
+  x: calc(50% - var(--card-width) / 2);
   y: 8;
-  width: 100px;
-  height: 150px;
+  width: var(--card-width);
+  height: var(--card-height);
+}
+
+.card-shadow {
+  margin: auto;
+  text-align: center;
+  pointer-events: all;
+  x: calc(50% - var(--card-width) / 2);
+  y: 10;
+  width: var(--card-width);
+  height: var(--card-height);
 }
 
 .card:hover {
