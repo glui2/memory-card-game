@@ -5,20 +5,77 @@ import Grid, { GridSpacing } from "@material-ui/core/Grid";
 const MainPage = () => {
   return (
     <div>
-      <Grid container spacing={3}>
-        <Grid item>
+      <Grid container direction="row">
+        <Grid item xs={2}>
           <Card></Card>
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <Card></Card>
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <Card></Card>
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
           <Card></Card>
         </Grid>
-        <Grid item>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
+          <Card></Card>
+        </Grid>
+        <Grid item xs={2}>
           <Card></Card>
         </Grid>
       </Grid>
