@@ -31,6 +31,14 @@
   animation: moveCard 1000ms ease-in-out both infinite;
 }
 
+.showWhite {
+  fill: url(#white-gradient);
+}
+
+.showBlack {
+  fill: url(#black-gradient);
+}
+
 @keyframes moveCard {
   50% {
     y: 3;
