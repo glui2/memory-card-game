@@ -11,36 +11,51 @@
   margin: auto;
   text-align: center;
   pointer-events: all;
-  x: calc(50% - var(--card-width) / 2);
-  y: 8;
+  x: calc((100% - var(--card-width)) / 2);
+  y: calc((100% - var(--card-height)) / 2);
   width: var(--card-width);
   height: var(--card-height);
+}
+
+.card-text {
+  margin: auto;
+  width: var(--card-width);
+  height: var(--card-height);
+  text-align: center;
+  transform: translate(45%, 50%);
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  font-size: 16px;
 }
 
 .card-shadow {
   margin: auto;
   text-align: center;
   pointer-events: all;
-  x: calc(50% - var(--card-width) / 2);
-  y: 10;
+  x: calc((100% - var(--card-width)) / 2);
+  y: calc((100% - var(--card-height)) / 2 + 0.5em);
   width: var(--card-width);
   height: var(--card-height);
 }
 
-.card:hover {
+.card-group:hover .card {
   animation: moveCard 1000ms ease-in-out both infinite;
 }
 
-.showWhite {
+.card-group:hover .card-text {
+  animation: tranform() 1000ms ease-in-out both infinite;
+}
+
+.show-white {
   fill: url(#white-gradient);
 }
 
-.showBlack {
+.show-black {
   fill: url(#black-gradient);
 }
 
 @keyframes moveCard {
   50% {
-    y: 3;
+    y: calc((100% - var(--card-height)) / 2 - 0.5em);
   }
 }

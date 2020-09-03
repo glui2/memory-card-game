@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import "./Card.css";
 
-const Card = () => {
+const Card = (props) => {
   const [isCardOpenedState, setIsCardOpenedState] = useState(false);
+  const cardValue = props.value;
 
   const flipCard = () => {
     if (isCardOpenedState) {
@@ -37,14 +38,22 @@ const Card = () => {
         fill="grey"
         filter="url(#shadow)"
       />
-      <rect
-        className={isCardOpenedState ? "card showWhite" : "card showBlack"}
-        stroke="yellow"
-        strokeWidth="3"
-        rx="10"
-        ry="10"
-        onClick={flipCard}
-      />
+      <g className="card-group">
+        <rect
+          className={isCardOpenedState ? "card show-white" : "card show-black"}
+          stroke="yellow"
+          strokeWidth="3"
+          rx="10"
+          ry="10"
+          onClick={flipCard}
+        />
+        <text
+          visibility={isCardOpenedState ? "visible" : "hidden"}
+          className="card-text"
+        >
+          {cardValue}
+        </text>
+      </g>
     </svg>
   );
 };
