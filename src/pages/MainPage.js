@@ -10,15 +10,15 @@ const MainPage = () => {
   const generateCardValues = () => {
     const randomArray = [];
 
-    for (var i = 0; i < 10; i++) {
+    for (var i = 0; i < 12; i++) {
       randomArray[i] = Math.floor(Math.random() * 10);
     }
 
     const pairsArray = randomArray.concat(randomArray);
-    pairsArray.map((value) => {
-      console.log(value);
+    const shuffledPairsArray = pairsArray.sort((a, b) => {
+      return Math.random() - 0.5;
     });
-    setCardValues(pairsArray);
+    setCardValues(shuffledPairsArray);
   };
 
   return (
