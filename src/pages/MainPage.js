@@ -7,7 +7,7 @@ import "./MainPage.css";
 const CardContext = React.createContext("closed");
 
 const MainPage = () => {
-  const [cardValues, setCardValues] = useState([]); // store card values in array of tupies with structure index: {value: int, cardState: open/closed}
+  const [cards, setCards] = useState([]); // store card values in array of tupies with structure index: {value: int, cardState: open/closed}
   const [newTurn, setNewTurn] = useState(true); // store whether is a new turn (true, picking first card) or same turn (false, picking 2nd card)
   const [firstCard, setFirstCard] = useState({ "": "" }); // store value of first card
   const [numberOfCardsOpened, setNumberOfCardsOpened] = useState(0);
@@ -34,7 +34,7 @@ const MainPage = () => {
   //   }, 500);
   // };
 
-  const generateCardValues = () => {
+  const generateCards = () => {
     const randomArray = [];
 
     for (var i = 0; i < 9; i++) {
@@ -50,26 +50,25 @@ const MainPage = () => {
     });
 
     console.log(shuffledPairsArray);
-    setCardValues(shuffledPairsArray);
+    setCards(shuffledPairsArray);
   };
 
   return (
     <div className="mainPage">
       <Grid container direction="row">
         <Grid item xs={12}>
-          <Button
-            variant="contained"
-            color="primary"
-            onClick={generateCardValues}
-          >
+          <Button variant="contained" color="primary" onClick={generateCards}>
             Start Game
           </Button>
         </Grid>
-        {cardValues.map((value, index) => {
+        {cards.map((card, index) => {
           return (
             <Grid item xs={2} key={index}>
               <div>
-                <Card value={value}></Card>
+                <Card
+                  value={card.value}
+                  isCardOpened={card.isCardOpened}
+                ></Card>
               </div>
             </Grid>
           );
