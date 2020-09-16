@@ -2,10 +2,9 @@ import React, { useState, useEffect } from "react";
 import { Card } from "../components/Card";
 import Grid, { GridSpacing } from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
+import { Score } from "../components/Score";
 import "./MainPage.css";
 import { wait } from "@testing-library/react";
-
-const CardContext = React.createContext("closed");
 
 const MainPage = () => {
   const [cards, setCards] = useState([]); // store card values in array of tupies with structure index: {value: int, cardState: open/closed}
@@ -14,6 +13,7 @@ const MainPage = () => {
     index: null,
     value: null,
   }); // store value of first card
+  const [score, setScore] = useState(0);
 
   const openCard = (index) => {
     console.log("This card has been clicked");
@@ -30,6 +30,7 @@ const MainPage = () => {
         //compare value with firstCard
         if (selectedCard.value === firstCard.value) {
           console.log("You've found a pair!");
+          setScore(score + 1);
           setNewTurn(true);
           setFirstCard({ index: "", value: "" });
         } else {
@@ -49,6 +50,7 @@ const MainPage = () => {
   };
 
   const generateCards = () => {
+    setScore(0);
     const randomArray = [];
 
     for (var i = 0; i < 9; i++) {
@@ -70,10 +72,13 @@ const MainPage = () => {
   return (
     <div className="mainPage">
       <Grid container direction="row">
-        <Grid item xs={12}>
+        <Grid item xs={6}>
           <Button variant="contained" color="primary" onClick={generateCards}>
             Start Game
           </Button>
+        </Grid>
+        <Grid item xs={6}>
+          <Score score={score}></Score>
         </Grid>
         {cards.map((card, index) => {
           return (

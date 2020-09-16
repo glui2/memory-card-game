@@ -2,18 +2,9 @@ import React, { useState } from "react";
 import "./Card.css";
 
 const Card = (props) => {
-  // const [isCardOpenedState, setIsCardOpenedState] = useState(false);
   const cardValue = props.value;
   const isCardOpened = props.isCardOpened;
   const index = props.index;
-
-  // const flipCard = () => {
-  //   if (isCardOpened) {
-  //     setIsCardOpenedState(false);
-  //   } else {
-  //     setIsCardOpenedState(true);
-  //   }
-  // };
 
   return (
     <svg width="200" height="200" display="block" className="card-svg">
