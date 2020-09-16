@@ -9,30 +9,41 @@ const CardContext = React.createContext("closed");
 const MainPage = () => {
   const [cards, setCards] = useState([]); // store card values in array of tupies with structure index: {value: int, cardState: open/closed}
   const [newTurn, setNewTurn] = useState(true); // store whether is a new turn (true, picking first card) or same turn (false, picking 2nd card)
-  const [firstCard, setFirstCard] = useState({ "": "" }); // store value of first card
-  const [numberOfCardsOpened, setNumberOfCardsOpened] = useState(0);
+  const [firstCard, setFirstCard] = useState({
+    index: null,
+    value: null,
+  }); // store value of first card
 
-  // useEffect(() => {
-  //   if (numberOfCardsOpened == 2) {
-  //     console.log("there are two cards opened ");
-  //   }
-  // }, [numberOfCardsOpened]);
+  const openCard = (index) => {
+    console.log("This card has been clicked");
+    const currentCards = [...cards];
+    const selectedCard = { ...cards[index] };
+    selectedCard.isCardOpened = true;
+    currentCards[index] = selectedCard;
+    setCards(currentCards);
+    console.log(cards);
+    console.log(selectedCard);
 
-  // const updateNumberOfOpenCards = () => {
-  //   console.log("This card has been clicked");
-  //   setNumberOfCardsOpened((numberOfCardsOpened) => numberOfCardsOpened + 1);
-
-  //   setTimeout(() => {
-  //     if (numberOfCardsOpened == 2) {
-  //       const openCards = document.getElementsByClassName("show-white");
-  //       console.log(openCards);
-  //       for (let i = 0; i < openCards.length; i++) {
-  //         openCards[i].classList.replace("show-white", "show-black");
-  //       }
-  //       setNumberOfCardsOpened(0);
-  //     }
-  //   }, 500);
-  // };
+    if (!newTurn) {
+      //compare value with firstCard
+      if (selectedCard.value === firstCard.value) {
+        console.log("You've found a pair!");
+        setNewTurn(true);
+        setFirstCard({ index: "", value: "" });
+      } else {
+        currentCards[firstCard.index].isCardOpened = false;
+        currentCards[index].isCardOpened = false;
+        setCards(currentCards);
+        setNewTurn(true);
+        setFirstCard({ index: "", value: "" });
+      }
+    } else {
+      //setFirstCard(this card's value)
+      setFirstCard({ index: index, value: selectedCard.value });
+      setNewTurn(false);
+      console.log(firstCard);
+    }
+  };
 
   const generateCards = () => {
     const randomArray = [];
@@ -64,7 +75,11 @@ const MainPage = () => {
         {cards.map((card, index) => {
           return (
             <Grid item xs={2} key={index}>
-              <div>
+              <div
+                onClick={() => {
+                  openCard(index);
+                }}
+              >
                 <Card
                   value={card.value}
                   isCardOpened={card.isCardOpened}
