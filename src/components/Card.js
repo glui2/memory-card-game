@@ -2,16 +2,18 @@ import React, { useState } from "react";
 import "./Card.css";
 
 const Card = (props) => {
-  const [isCardOpenedState, setIsCardOpenedState] = useState(false);
+  // const [isCardOpenedState, setIsCardOpenedState] = useState(false);
   const cardValue = props.value;
+  const isCardOpened = props.isCardOpened;
+  const index = props.index;
 
-  const flipCard = () => {
-    if (isCardOpenedState) {
-      setIsCardOpenedState(false);
-    } else {
-      setIsCardOpenedState(true);
-    }
-  };
+  // const flipCard = () => {
+  //   if (isCardOpened) {
+  //     setIsCardOpenedState(false);
+  //   } else {
+  //     setIsCardOpenedState(true);
+  //   }
+  // };
 
   return (
     <svg width="200" height="200" display="block" className="card-svg">
@@ -40,15 +42,14 @@ const Card = (props) => {
       />
       <g className="card-group">
         <rect
-          className={isCardOpenedState ? "card show-white" : "card show-black"}
+          className={isCardOpened ? "card show-white" : "card show-black"}
           stroke="yellow"
           strokeWidth="3"
           rx="10"
           ry="10"
-          onClick={flipCard}
         />
         <text
-          visibility={isCardOpenedState ? "visible" : "hidden"}
+          visibility={isCardOpened ? "visible" : "hidden"}
           className="card-text"
         >
           {cardValue}
