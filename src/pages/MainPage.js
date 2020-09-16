@@ -36,7 +36,7 @@ const MainPage = () => {
         } else {
           currentCards[firstCard.index].isCardOpened = false;
           currentCards[index].isCardOpened = false;
-          setTimeout(setCards(currentCards), 3000);
+          setCards(currentCards);
           setNewTurn(true);
           setFirstCard({ index: "", value: "" });
         }
