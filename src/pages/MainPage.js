@@ -3,6 +3,7 @@ import { Card } from "../components/Card";
 import Grid, { GridSpacing } from "@material-ui/core/Grid";
 import { Button } from "@material-ui/core";
 import "./MainPage.css";
+import { wait } from "@testing-library/react";
 
 const CardContext = React.createContext("closed");
 
@@ -18,30 +19,32 @@ const MainPage = () => {
     console.log("This card has been clicked");
     const currentCards = [...cards];
     const selectedCard = { ...cards[index] };
-    selectedCard.isCardOpened = true;
-    currentCards[index] = selectedCard;
-    setCards(currentCards);
-    console.log(cards);
-    console.log(selectedCard);
 
-    if (!newTurn) {
-      //compare value with firstCard
-      if (selectedCard.value === firstCard.value) {
-        console.log("You've found a pair!");
-        setNewTurn(true);
-        setFirstCard({ index: "", value: "" });
+    if (!selectedCard.isCardOpened) {
+      selectedCard.isCardOpened = true;
+      currentCards[index] = selectedCard;
+      setCards(currentCards);
+      console.log(cards);
+      console.log(selectedCard);
+      if (!newTurn) {
+        //compare value with firstCard
+        if (selectedCard.value === firstCard.value) {
+          console.log("You've found a pair!");
+          setNewTurn(true);
+          setFirstCard({ index: "", value: "" });
+        } else {
+          currentCards[firstCard.index].isCardOpened = false;
+          currentCards[index].isCardOpened = false;
+          setTimeout(setCards(currentCards), 3000);
+          setNewTurn(true);
+          setFirstCard({ index: "", value: "" });
+        }
       } else {
-        currentCards[firstCard.index].isCardOpened = false;
-        currentCards[index].isCardOpened = false;
-        setCards(currentCards);
-        setNewTurn(true);
-        setFirstCard({ index: "", value: "" });
+        //setFirstCard(this card's value)
+        setFirstCard({ index: index, value: selectedCard.value });
+        setNewTurn(false);
+        console.log(firstCard);
       }
-    } else {
-      //setFirstCard(this card's value)
-      setFirstCard({ index: index, value: selectedCard.value });
-      setNewTurn(false);
-      console.log(firstCard);
     }
   };
 
