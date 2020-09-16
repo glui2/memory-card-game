@@ -74,7 +74,7 @@ const MainPage = () => {
       <Grid container direction="row">
         <Grid item xs={6}>
           <Button variant="contained" color="primary" onClick={generateCards}>
-            Start Game
+            New Game
           </Button>
         </Grid>
         <Grid item xs={6}>
