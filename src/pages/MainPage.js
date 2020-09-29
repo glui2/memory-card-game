@@ -16,13 +16,13 @@ const MainPage = () => {
   const [score, setScore] = useState(0);
 
   const openCard = (index) => {
-    console.log("This card has been clicked");
+    console.log("Card index " + index + " has been clicked");
     const currentCards = [...cards];
-    const selectedCard = { ...cards[index] };
+    const selectedCard = cards[index];
 
     if (!selectedCard.isCardOpened) {
       selectedCard.isCardOpened = true;
-      currentCards[index] = selectedCard;
+      // currentCards[index] = selectedCard;
       setCards(currentCards);
       console.log(cards);
       console.log(selectedCard);
